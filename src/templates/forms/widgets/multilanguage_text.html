@@ -2,6 +2,7 @@
 {% for lang, value in widget.value.variants.items %}
     <div>
         <div><b>{{ lang }}</b></div>
+        {# Be careful: if you change name attribute you also need to change concat_name method in widget class #}
         <textarea name="{{ widget.name }}__{{ lang }}"{% include "django/forms/widgets/attrs.html" %}>{% if value %}{{ value }}{% endif %}</textarea>
     </div>
 {% endfor %}
