@@ -1,0 +1,8 @@
+<div style="display: flex">
+{% for lang, value in widget.value.variants.items %}
+    <div>
+        <div><b>{{ lang }}</b></div>
+        <textarea name="{{ widget.name }}__{{ lang }}"{% include "django/forms/widgets/attrs.html" %}>{% if value %}{{ value }}{% endif %}</textarea>
+    </div>
+{% endfor %}
+</div>
