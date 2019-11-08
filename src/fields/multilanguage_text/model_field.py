@@ -25,11 +25,15 @@ class MultilanguageTextField(models.Field):
 
     @staticmethod
     def dump_mlt_object(obj):
+        if obj is None:
+            return None
         return MultilanguageTextField.SEP_STRING.join(['{}|{}'.format(x, y) for x, y in obj.collection.items()])
 
     @staticmethod
     def parse_mlt_object(str_value):
         result = MultilanguageText()
+        if str_value is None:
+            return result
         for s in str_value.split(MultilanguageTextField.SEP_STRING):
             code, text = s.split('|', 1)
             result.set(code, text)
