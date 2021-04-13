@@ -39,7 +39,7 @@ class MultilanguageTextField(models.Field):
             result.set(code, text)
         return result
 
-    def from_db_value(self, value, expression, connection, context):
+    def from_db_value(self, value, expression, connection):
         if value is None:
             return value
         return self.parse_mlt_object(value)
